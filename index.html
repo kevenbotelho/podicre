@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podicrê - Seu Podcast de Inspiração Diária</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Podicrê</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-link active">Início</a>
+                    <a href="#episodes" class="nav-link">Episódios</a>
+                    <a href="#about" class="nav-link">Sobre</a>
+                </nav>
+                <div class="theme-toggle">
+                    <button class="theme-btn" id="theme-toggle" title="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-nav-link">Início</a>
+            <a href="#episodes" class="mobile-nav-link">Episódios</a>
+            <a href="#about" class="mobile-nav-link">Sobre</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Descubra histórias que inspiram</h1>
+                    <p>Seu podcast diário de motivação, criatividade e crescimento pessoal. Junte-se à comunidade Podicrê!</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="scrollToSection('episodes')">Ouvir Episódios</button>
+                        <button class="btn-secondary" onclick="scrollToSection('about')">Saber Mais</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="podcast-cover">
+                        <img src="assets/cover-art.jpg" alt="Podicrê Cover Art">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Episodes -->
+    <section class="featured-episodes">
+        <div class="container">
+            <h2>Episódios em Destaque</h2>
+            <div class="episodes-grid" id="featured-episodes">
+                <!-- Featured episodes will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Episodes -->
+    <section id="episodes" class="latest-episodes">
+        <div class="container">
+            <h2>Últimos Episódios</h2>
+            
+            <!-- Search and Filter -->
+            <div class="episodes-controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar episódios...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-box">
+                    <select id="category-filter">
+                        <option value="all">Todas as Categorias</option>
+                        <!-- Categories will be loaded here -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="episodes-list" id="episodes-list">
+                <!-- All episodes will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre o Podicrê</h2>
+                    <p>O Podicrê nasceu da necessidade de trazer conteúdo inspirador e motivacional para o dia a dia das pessoas. Acreditamos que pequenas doses de inspiração podem transformar vidas.</p>
+                    <p>Nossos episódios abordam temas como desenvolvimento pessoal, criatividade, produtividade, bem-estar e muito mais. Tudo isso com uma abordagem leve, descontraída e cheia de energia.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Episódios</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Ouvintes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Inspiração</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/about-image.jpg" alt="Sobre o Podicrê">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Player -->
+    <div class="audio-player" id="audio-player">
+        <div class="player-content">
+            <div class="current-episode">
+                <div class="episode-art">
+                    <img id="player-art" src="" alt="Capa do episódio">
+                </div>
+                <div class="episode-info">
+                    <h4 id="player-title">Título do Episódio</h4>
+                    <p id="player-category">Categoria</p>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button class="control-btn" id="prev-btn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="control-btn play-btn" id="play-btn">
+                    <i class="fas fa-play" id="play-icon"></i>
+                </button>
+                <button class="control-btn" id="next-btn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+            <div class="player-progress">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                <span id="duration">0:00</span>
+            </div>
+            <div class="player-volume">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Podicrê</h3>
+                    <p>Seu podcast de inspiração diária</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#episodes">Episódios</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Podicrê. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Episode Modal -->
+    <div class="modal" id="episode-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="modal-art">
+                        <img id="modal-art" src="" alt="Capa do episódio">
+                    </div>
+                    <div class="modal-info">
+                        <h3 id="modal-title">Título do Episódio</h3>
+                        <p id="modal-category">Categoria</p>
+                        <p id="modal-date">Data de Publicação</p>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p id="modal-description">Descrição do episódio...</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-primary" id="play-modal-btn">Ouvir Agora</button>
+                    <button class="btn-secondary" id="close-modal-btn">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

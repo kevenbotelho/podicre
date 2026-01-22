@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Desenvolvimento Pessoal",
+    "slug": "desenvolvimento-pessoal"
+  },
+  {
+    "id": 2,
+    "name": "Criatividade",
+    "slug": "criatividade"
+  },
+  {
+    "id": 3,
+    "name": "Produtividade",
+    "slug": "produtividade"
+  },
+  {
+    "id": 4,
+    "name": "Bem-estar",
+    "slug": "bem-estar"
+  },
+  {
+    "id": 5,
+    "name": "Inspiração",
+    "slug": "inspiracao"
+  },
+  {
+    "id": 6,
+    "name": "Carreira",
+    "slug": "carreira"
+  },
+  {
+    "id": 7,
+    "name": "Relacionamentos",
+    "slug": "relacionamentos"
+  },
+  {
+    "id": 8,
+    "name": "Finanças",
+    "slug": "financas"
+  }
+]
