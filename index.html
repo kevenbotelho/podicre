@@ -1,168 +1,300 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PODICRE - Podcast em Vídeo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Podicrê - Hub de Cultura</title>
+    <meta name="description" content="Videocast que mistura cultura, tecnologia e entretenimento com uma vibe urbana e autêntica.">
+    <meta name="keywords" content="podcast, videocast, cultura, tecnologia, entretenimento, urbano">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kevenbotelho.github.io/podicre/">
+    <meta property="og:title" content="Podicrê - Hub de Cultura">
+    <meta property="og:description" content="Videocast que mistura cultura, tecnologia e entretenimento com uma vibe urbana e autêntica.">
+    <meta property="og:image" content="https://kevenbotelho.github.io/podicre/assets/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kevenbotelho.github.io/podicre/">
+    <meta property="twitter:title" content="Podicrê - Hub de Cultura">
+    <meta property="twitter:description" content="Videocast que mistura cultura, tecnologia e entretenimento com uma vibe urbana e autêntica.">
+    <meta property="twitter:image" content="https://kevenbotelho.github.io/podicre/assets/og-image.jpg">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <!-- Audio Player Sticky -->
+    <div id="audio-player" class="audio-player hidden">
+        <div class="audio-content">
+            <div class="audio-info">
+                <div class="audio-title">Podicrê - Episódio 001</div>
+                <div class="audio-artist">Com Keven Botelho</div>
+            </div>
+            <div class="audio-controls">
+                <button id="audio-play-pause" class="audio-btn">▶</button>
+                <input type="range" id="audio-progress" min="0" max="100" value="0" class="audio-slider">
+                <span id="audio-time">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <h1 class="logo">PODICRE</h1>
-            <nav>
+            <div class="logo">
+                <h1>🎧 Podicrê</h1>
+            </div>
+            <nav class="nav">
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#episodios">Episódios</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#episodes">Episódios</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#community">Comunidade</a></li>
+                    <li><a href="#store">Loja</a></li>
                 </ul>
             </nav>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden" id="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#episodes">Episódios</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#community">Comunidade</a></li>
+            <li><a href="#store">Loja</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
             <div class="hero-content">
-                <h2>Discutindo temas que importam</h2>
-                <p class="subtitle">Um podcast em vídeo onde exploramos questões sociais, culturais e atuais</p>
-                <a href="#episodios" class="btn">Assistir Episódios</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="destaques" class="highlights">
-        <div class="container">
-            <h2>Destaques</h2>
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <div class="highlight-icon">🎙️</div>
-                    <h3>Podcast em Vídeo</h3>
-                    <p>A combinação perfeita entre a profundidade do áudio e o engajamento do vídeo.</p>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon">📚</div>
-                    <h3>Temas Variados</h3>
-                    <p>Discutimos desde questões sociais até cultura e atualidades.</p>
-                </div>
-                <div class="highlight-card">
-                    <div class="highlight-icon">🎥</div>
-                    <h3>Produção Profissional</h3>
-                    <p>Qualidade de imagem e som para uma experiência imersiva.</p>
+                <h1 class="hero-title">Cultura que <span class="highlight">inspira</span></h1>
+                <p class="hero-subtitle">Videocast que trata assuntos relevantes da atualidade</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToSection('episodes')">Ouvir Agora</button>
+                    <button class="btn-secondary" onclick="scrollToSection('about')">Conhecer</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="about">
-        <div class="container">
-            <h2>Sobre o PODICRE</h2>
-            <div class="about-content">
-                <p>PODICRE é um projeto de podcast em vídeo que tem como objetivo discutir temas variados de forma aprofundada e acessível. Nosso formato combina a profundidade do podcast com o engajamento do vídeo, criando uma experiência única para nosso público.</p>
-                <p>Atualmente, estamos produzindo conteúdo que aborda questões sociais importantes, com discussões que buscam promover reflexão e conscientização.</p>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Episódios</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">Horas de Conteúdo</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Seguidores</span>
-                    </div>
-                </div>
+            
+            <!-- 3D Background Elements -->
+            <div class="bg-3d">
+                <div class="torus"></div>
+                <div class="cylinder"></div>
+                <div class="sphere"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="episodios" class="episodes">
-        <div class="container">
-            <h2>Nossos Episódios</h2>
-
-            <div class="episode-grid">
-                <div class="episode-card">
-                    <div class="episode-badge">Episódio 1</div>
-                    <div class="episode-image" style="background-image: url('https://via.placeholder.com/400x225/333333/ffffff?text=Racismo+no+Esporte');"></div>
-                    <div class="episode-info">
+        <!-- Video Player Section -->
+        <section class="video-section">
+            <div class="container">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- Google Drive Video Embed -->
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            src="https://drive.google.com/file/d/1Iir5Wmx6jFPEdMOFnea1eq7lahz_1FHf/preview" 
+                            title="Podicrê - Episódio 001" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h2>Episódio 001: Racismo no esporte</h2>
+                        <p>Conversando sobre o caso de racismo no estádio do Palmeiras - Com Glauton.</p>
                         <div class="episode-meta">
-                            <span class="episode-duration">🕒 45 min</span>
-                            <span class="episode-date">📅 15/01/2024</span>
+                            <span class="meta-item">📅 29/01/2026</span>
+                            <span class="meta-item">⏱️ 45 min</span>
+                            <span class="meta-item">👥 Keven Botelho</span>
                         </div>
-                        <h3>Racismo no Esporte</h3>
-                        <p class="episode-status">Disponível</p>
-                        <p class="episode-description">Discutimos um caso fictício de racismo que um jogador sofreu, explorando as implicações sociais e o impacto no esporte.</p>
-                        <div class="episode-tags">
-                            <span class="tag">Social</span>
-                            <span class="tag">Esporte</span>
-                            <span class="tag">Conscientização</span>
+                        <div class="audio-links">
+                            <a href="#" class="audio-link" onclick="activateAudioPlayer('https://open.spotify.com/embed/episode/123')">🎧 Spotify</a>
+                            <a href="#" class="audio-link" onclick="activateAudioPlayer('https://deezer.page.link/123')">🎵 Deezer</a>
                         </div>
-                        <a href="#" class="btn">Assistir Agora</a>
-                    </div>
-                </div>
-
-                <div class="episode-card coming-soon">
-                    <div class="episode-badge">Episódio 2</div>
-                    <div class="episode-image" style="background-image: url('https://via.placeholder.com/400x225/666666/ffffff?text=Foco+em+Pauta');"></div>
-                    <div class="episode-info">
-                        <div class="episode-meta">
-                            <span class="episode-duration">🕒 Em breve</span>
-                            <span class="episode-date">📅 Lançamento breve</span>
-                        </div>
-                        <h3>Foco em Pauta</h3>
-                        <p class="episode-status">Em Breve</p>
-                        <p class="episode-description">Nosso próximo episódio trará discussões sobre temas atuais que estão em pauta na sociedade.</p>
-                        <div class="episode-tags">
-                            <span class="tag">Atualidades</span>
-                            <span class="tag">Debate</span>
-                            <span class="tag">Análise</span>
-                        </div>
-                        <a href="#" class="btn disabled">Em Breve</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="newsletter" class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <div class="newsletter-text">
-                    <h2>Fique por dentro!</h2>
-                    <p>Assine nossa newsletter para receber notificações sobre novos episódios, bastidores e conteúdo exclusivo.</p>
+        <!-- Episodes Grid -->
+        <section id="episodes" class="episodes">
+            <div class="container">
+                <h2 class="section-title">Últimos Episódios</h2>
+                <div class="episodes-grid">
+                    <!-- Episode Cards will be generated by JavaScript -->
                 </div>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Seu melhor email" required>
-                    <button type="submit" class="btn">Assinar Newsletter</button>
-                </form>
+                <div class="episodes-actions">
+                    <button class="btn-secondary">Ver Todos os Episódios</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contato" class="contact">
-        <div class="container">
-            <h2>Entre em Contato</h2>
-            <p>Quer sugerir um tema ou entrar em contato conosco? Envie uma mensagem!</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu email" required>
-                <textarea placeholder="Sua mensagem" required></textarea>
-                <button type="submit" class="btn">Enviar Mensagem</button>
-            </form>
-        </div>
-    </section>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">Sobre o Podicrê</h2>
+                        <p>O Podicrê nasceu a partir da necessidade de criação de um projeto para o programa Jovem Aprendiz Senac, onde a equipe se mobilizou para por em prática o projeto planejado em sala.</p>
+                        <p>Com uma abordagem urbana e direta, trazemos discussões relevantes sobre o mundo que nos cerca, sempre com bom humor e muita informação.</p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Episódios</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100K+</span>
+                                <span class="stat-label">Ouvintes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">25+</span>
+                                <span class="stat-label">Convidados</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image hidden-mobile">
+                        <div class="image-placeholder">
+                            <span>🎧</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <footer>
+        <!-- Community Section -->
+        <section id="community" class="community">
+            <div class="container">
+                <h2 class="section-title">Junte-se à Comunidade</h2>
+                <p class="community-subtitle">Seja parte da conversa que está acontecendo</p>
+                
+                <!-- Newsletter Signup -->
+                <div class="newsletter">
+                    <div class="newsletter-content">
+                        <h3>Fique por dentro</h3>
+                        <p>Receba notícias sobre novos episódios, convidados especiais e conteúdo exclusivo.</p>
+                        <form id="newsletter-form" class="newsletter-form">
+                            <input type="email" id="email" placeholder="Seu email" required>
+                            <button type="submit" class="btn-primary">Inscrever-se</button>
+                        </form>
+                        <div id="newsletter-message" class="newsletter-message"></div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="#" class="social-btn">Twitter</a>
+                    <a href="#" class="social-btn">Instagram</a>
+                    <a href="#" class="social-btn">Discord</a>
+                    <a href="#" class="social-btn">YouTube</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section id="store" class="store">
+            <div class="container">
+                <h2 class="section-title">Loja Podicrê</h2>
+                <p class="store-subtitle">Mostre o seu melhor lado</p>
+                
+                <div class="products-grid">
+                    <!-- Product Cards -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">👕</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Camiseta Urban Vibes</h3>
+                            <p>Design exclusivo que representa a essência do Podicrê</p>
+                            <div class="product-price">R$ 89,90</div>
+                            <button class="btn-primary product-btn" onclick="window.open('https://checkout.example.com/product/1', '_blank')">Comprar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">🧢</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Boné Street Culture</h3>
+                            <p>Para quem curte o estilo urbano e quer mostrar sua identidade</p>
+                            <div class="product-price">R$ 69,90</div>
+                            <button class="btn-primary product-btn" onclick="window.open('https://checkout.example.com/product/2', '_blank')">Comprar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="image-placeholder">☕</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Copos Podicrê</h3>
+                            <p>Para os momentos de pausa e reflexão</p>
+                            <div class="product-price">R$ 39,90</div>
+                            <button class="btn-primary product-btn" onclick="window.open('https://checkout.example.com/product/3', '_blank')">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 PODICRE. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="#" class="social-icon">📱</a>
-                <a href="#" class="social-icon">📘</a>
-                <a href="#" class="social-icon">🐦</a>
-                <a href="#" class="social-icon">📺</a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🎧 Podicrê</h3>
+                    <p>Cultura que respira</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#episodes">Episódios</a></li>
+                            <li><a href="#about">Sobre</a></li>
+                            <li><a href="#community">Comunidade</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Termos de Uso</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📸</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                        <a href="#" aria-label="Spotify">🎵</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Podicrê. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
