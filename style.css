@@ -271,7 +271,12 @@ p {
 }
 
 .mobile-menu.active {
-    left: 0;
+    left: 0 !important;
+}
+
+.mobile-menu.hidden {
+    left: -100% !important;
+    transition: left 0.3s ease;
 }
 
 .mobile-menu ul {

@@ -19,17 +19,17 @@ const episodes = [
         desc: 'Conversando sobre o caso de racismo no estádio do Palmeiras - Com Glauton.',
         date: '10/12/2025',
         duration: '11 min',
-        guest: 'Keven Botelho',
+        guest: 'Apresentador Lianderson',
         image: '🎧'
     },
     {
         id: 2,
         title: 'Em breve',
-        desc: 'Debate acerca da manipulação do Marketing em relação à melhor divulgação produtos',
-        date: '22/05026',
-        duration: '52 min',
-        guest: 'DJ Ana Clara',
-        image: '🎵'
+        desc: 'Debate acerca da manipulação do Marketing em relação à melhor divulgação de produtos',
+        date: '22/05/026',
+        duration: '15 min',
+        guest: 'Gerente Keven Botelho',
+        image: '📊'
     }
 ];
 
@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mobile Menu Toggle
 function initMobileMenu() {
     mobileMenuToggle.addEventListener('click', () => {
+        // Garantir que o menu esteja visível
         mobileMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('hidden');
         mobileMenuToggle.classList.toggle('active');
         
         // Animação suave para o menu toggle
@@ -93,6 +95,7 @@ function initMobileMenu() {
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
+            mobileMenu.classList.add('hidden');
             mobileMenuToggle.classList.remove('active');
             
             // Resetar animação do toggle
@@ -305,6 +308,25 @@ function scrollToSection(sectionId) {
             behavior: 'smooth',
             block: 'start'
         });
+    }
+}
+
+function scrollToVideo() {
+    // Primeiro rola até a seção de vídeo
+    const videoSection = document.querySelector('.video-section');
+    if (videoSection) {
+        videoSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Depois tenta focar no iframe do vídeo
+        setTimeout(() => {
+            const iframe = document.querySelector('.video-wrapper iframe');
+            if (iframe) {
+                iframe.focus();
+            }
+        }, 1000); // Espera 1 segundo para garantir que a rolagem termine
     }
 }
 
