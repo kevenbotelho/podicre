@@ -26,7 +26,7 @@ const episodes = [
         id: 2,
         title: 'Em breve',
         desc: 'Debate acerca da manipulação do Marketing em relação à melhor divulgação de produtos',
-        date: '22/05/026',
+        date: '22/05/2026',
         duration: '15 min',
         guest: 'Gerente Keven Botelho',
         image: '📊'

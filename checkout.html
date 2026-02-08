@@ -254,8 +254,22 @@
                     <li><a href="index.html#about">Sobre</a></li>
                 </ul>
             </nav>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden" id="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#store">Loja</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+        </ul>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -450,6 +464,71 @@
         const checkoutForm = document.getElementById('checkout-form-element');
         const successMessage = document.getElementById('success-message');
         const checkoutFormContainer = document.getElementById('checkout-form');
+        
+        // Elementos do Mobile Menu
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Inicializa o app
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+            initHeaderScroll();
+        });
+
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    // Garantir que o menu esteja visível
+                    mobileMenu.classList.toggle('active');
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenuToggle.classList.toggle('active');
+                    
+                    // Animação suave para o menu toggle
+                    const spans = mobileMenuToggle.querySelectorAll('span');
+                    if (mobileMenu.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+
+                // Close menu when clicking on links
+                const menuLinks = mobileMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuToggle.classList.remove('active');
+                        
+                        // Resetar animação do toggle
+                        const spans = mobileMenuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+        }
+
+        // Header Scroll Effect
+        function initHeaderScroll() {
+            const header = document.querySelector('.header');
+            
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        }
 
         // Atualiza informações do produto
         function updateProductInfo(productId) {
