@@ -473,6 +473,150 @@ p {
     color: var(--bg-color);
 }
 
+/* Backstage Section */
+.backstage {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(to bottom, #080808, var(--bg-color));
+}
+
+.backstage-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: var(--spacing-xl);
+}
+
+.backstage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.backstage-video {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.backstage-video:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-neon);
+}
+
+.backstage-video .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.backstage-video .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.backstage-video-info {
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.backstage-video-info h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.backstage-video-info p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Video Cover Styles */
+.video-cover {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), #1a1a2e);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.video-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.video-cover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.video-cover:hover .video-cover-content {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.video-cover-title {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 4px;
+}
+
+.video-play-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--bg-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 30px rgba(204, 255, 0, 0.5);
+}
+
+.video-play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(204, 255, 0, 0.8);
+}
+
+/* Quando o vídeo está carregado */
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* Episodes Grid */
 .episodes {
     padding: var(--spacing-xl) 0;

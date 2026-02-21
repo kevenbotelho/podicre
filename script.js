@@ -11,6 +11,26 @@ const newsletterForm = document.getElementById('newsletter-form');
 const newsletterMessage = document.getElementById('newsletter-message');
 const episodesGrid = document.querySelector('.episodes-grid');
 
+// Load Backstage Video
+function loadBackstageVideo(btn) {
+    const videoWrapper = btn.closest('.video-wrapper');
+    const videoId = videoWrapper.dataset.videoId;
+    
+    // Create iframe element
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://drive.google.com/file/d/${videoId}/preview`;
+    iframe.width = '100%';
+    iframe.height = '100%';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.title = 'Backstage Video';
+    
+    // Clear the wrapper and add the iframe
+    videoWrapper.innerHTML = '';
+    videoWrapper.appendChild(iframe);
+    videoWrapper.classList.remove('video-cover');
+}
+
 // Episode Data
 const episodes = [
     {
