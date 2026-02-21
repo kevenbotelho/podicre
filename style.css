@@ -1074,6 +1074,7 @@ p {
         display: none;
     }
     
+    /* Video Section */
     .video-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1083,6 +1084,18 @@ p {
         text-align: center;
     }
     
+    /* Backstage Section - Grid ajustável para mobile */
+    .backstage-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    
+    .backstage-video {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* About Section */
     .about-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1096,8 +1109,10 @@ p {
         display: none !important;
     }
     
+    /* Newsletter */
     .newsletter {
         text-align: center;
+        padding: 16px;
     }
     
     .newsletter-form {
@@ -1119,10 +1134,29 @@ p {
         justify-content: center;
     }
     
+    /* Products Grid */
     .products-grid {
-        justify-content: center;
+        grid-template-columns: 1fr;
+        padding: 0 10px;
     }
     
+    .product-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Episodes Grid */
+    .episodes-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    
+    .episode-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Footer */
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1140,6 +1174,7 @@ p {
         display: none;
     }
     
+    /* Audio Player */
     .audio-controls {
         flex-direction: column;
         gap: 10px;
@@ -1151,6 +1186,7 @@ p {
         max-width: 300px;
     }
     
+    /* Hero */
     .hero-title {
         font-size: 3rem;
         text-align: center;
@@ -1164,14 +1200,23 @@ p {
         justify-content: center;
     }
     
-    .episodes-grid {
+    /* Section Titles - Centralizados corretamente */
+    .section-title {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+    
+    /* Episode Meta */
+    .episode-meta {
         justify-content: center;
     }
     
-    .section-title {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+    /* Audio Links */
+    .audio-links {
+        justify-content: center;
     }
 }
 
