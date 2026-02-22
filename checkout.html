@@ -457,9 +457,9 @@
     <script>
         // Dados dos produtos
         const products = {
-            camiseta: { name: 'Camiseta Urban Vibes', desc: 'Design exclusivo que representa a essência do Podicrê', price: 89.90, image: '👕' },
-            bone: { name: 'Boné Street Culture', desc: 'Para quem curte o estilo urbano e quer mostrar sua identidade', price: 69.90, image: '🧢' },
-            copo: { name: 'Copos Podicrê', desc: 'Para os momentos de pausa e reflexão', price: 39.90, image: '☕' }
+            camiseta: { name: 'Camiseta Urban Vibes', desc: 'Design exclusivo que representa a essência do Podicrê', price: 89.90, image: 'images/produto-casaco.png' },
+            bone: { name: 'Boné Street Culture', desc: 'Para quem curte o estilo urbano e quer mostrar sua identidade', price: 69.90, image: 'images/PRODUTOS_BONE.jpeg' },
+            copo: { name: 'Copos Podicrê', desc: 'Para os momentos de pausa e reflexão', price: 39.90, image: 'images/PRODUTOS_CANECA.jpeg' }
         };
 
         // Elementos DOM
@@ -542,7 +542,7 @@
         // Atualiza informações do produto
         function updateProductInfo(productId) {
             const product = products[productId];
-            productImage.textContent = product.image;
+            productImage.innerHTML = `<img src="${product.image}" alt="${product.name}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">`;
             productTitle.textContent = product.name;
             productDesc.textContent = product.desc;
             productPrice.textContent = `R$ ${product.price.toFixed(2)}`;
