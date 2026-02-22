@@ -194,6 +194,52 @@ p {
     align-items: center;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+.logo-img-footer {
+    height: 50px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Logo responsiva para mobile */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 30px;
+        max-width: 120px;
+    }
+    
+    .logo-img-footer {
+        height: 35px;
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-img {
+        height: 25px;
+        max-width: 100px;
+    }
+    
+    .logo-img-footer {
+        height: 30px;
+        max-width: 120px;
+    }
+}
+
 .logo h1 {
     font-size: 1.5rem;
     letter-spacing: 2px;
@@ -248,6 +294,7 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    z-index: 1001;
 }
 
 .mobile-menu-toggle span {
@@ -262,12 +309,14 @@ p {
     top: 70px;
     left: -100%;
     width: 100%;
+    max-width: 320px;
     height: calc(100vh - 70px);
     background: var(--bg-color);
     z-index: 999;
     transition: left 0.3s ease;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     box-shadow: var(--shadow-hard);
+    overflow-x: hidden;
 }
 
 .mobile-menu.active {
@@ -282,19 +331,20 @@ p {
 .mobile-menu ul {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
 }
 
 .mobile-menu a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-family: var(--font-title);
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     display: block;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
 }
 
 /* Hero Section */
@@ -1066,12 +1116,30 @@ p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
     .mobile-menu-toggle {
         display: flex;
     }
     
     .nav {
         display: none;
+    }
+    
+    /* Ajuste do header para mobile */
+    .header .container {
+        padding: 0 10px;
+        min-width: 0;
+    }
+    
+    .logo {
+        flex-shrink: 0;
+    }
+    
+    .mobile-menu-toggle {
+        flex-shrink: 0;
     }
     
     /* Video Section */
