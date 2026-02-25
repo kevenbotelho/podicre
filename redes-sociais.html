@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Redes Sociais - Podicrê</title>
+    <meta name="description" content="Conheça a equipe do Podicrê e acompanhe nossas redes sociais">
+    <meta name="keywords" content="podcast, videocast, cultura, tecnologia, equipe, redes sociais">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/LOGO-FAVICON.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/LOGO-FAVICON.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kevenbotelho.github.io/podicre/redes-sociais.html">
+    <meta property="og:title" content="Redes Sociais - Podicrê">
+    <meta property="og:description" content="Conheça a equipe do Podicrê e acompanhe nossas redes sociais">
+    <meta property="og:image" content="https://kevenbotelho.github.io/podicre/images/logo-completa.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kevenbotelho.github.io/podicre/redes-sociais.html">
+    <meta property="twitter:title" content="Redes Sociais - Podicrê">
+    <meta property="twitter:description" content="Conheça a equipe do Podicrê e acompanhe nossas redes sociais">
+    <meta property="twitter:image" content="https://kevenbotelho.github.io/podicre/images/logo-completa.png">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos específicos para a página de redes sociais */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-neon);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--bg-color);
+            font-family: var(--font-title);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .member-info {
+            padding: var(--spacing-md);
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: var(--spacing-xs);
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: var(--spacing-md);
+            font-style: italic;
+        }
+        
+        .social-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+        
+        .social-item {
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .social-name {
+            font-weight: 700;
+        }
+        
+        .social-handle {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        /* Estilos para o ex-integrante */
+        .former-member {
+            opacity: 0.7;
+            border-style: dashed;
+        }
+        
+        .former-member .member-role {
+            color: #999;
+        }
+        
+        /* Estilos para mobile */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+            
+            .member-photo {
+                height: 200px;
+                font-size: 3rem;
+            }
+            
+            .social-list {
+                gap: 8px;
+            }
+            
+            .social-item {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .member-photo {
+                height: 180px;
+                font-size: 2.5rem;
+            }
+            
+            .member-name {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Player Sticky -->
+    <div id="audio-player" class="audio-player hidden">
+        <div class="audio-content">
+            <div class="audio-info">
+                <div class="audio-title">Podicrê - Episódio 001</div>
+                <div class="audio-artist">Com Glauton</div>
+            </div>
+            <div class="audio-controls">
+                <button id="audio-play-pause" class="audio-btn">▶</button>
+                <input type="range" id="audio-progress" min="0" max="100" value="0" class="audio-slider">
+                <span id="audio-time">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo-completa.png" alt="Podicrê" class="logo-img">
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#episodes">Episódios</a></li>
+                    <li><a href="index.html#backstage">Backstage</a></li>
+                    <li><a href="index.html#about">Sobre</a></li>
+                    <li><a href="index.html#community">Comunidade</a></li>
+                    <li><a href="index.html#store">Loja</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu hidden" id="mobile-menu">
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#episodes">Episódios</a></li>
+            <li><a href="index.html#backstage">Backstage</a></li>
+            <li><a href="index.html#about">Sobre</a></li>
+            <li><a href="index.html#community">Comunidade</a></li>
+            <li><a href="index.html#store">Loja</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Equipe <span class="highlight">Podicrê</span></h1>
+                <p class="hero-subtitle">Conheça quem está por trás do nosso conteúdo</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToSection('team')">Ver Equipe</button>
+                    <button class="btn-secondary" onclick="window.location.href='index.html'">Voltar ao Início</button>
+                </div>
+            </div>
+            
+            <!-- 3D Background Elements -->
+            <div class="bg-3d">
+                <div class="torus"></div>
+                <div class="cylinder"></div>
+                <div class="sphere"></div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team">
+            <div class="container">
+                <h2 class="section-title">Nossa Equipe</h2>
+                <p class="community-subtitle">Conheça os integrantes do Podicrê e acompanhe nossas redes sociais</p>
+                
+                <div class="team-grid">
+                    <!-- Keven Botelho -->
+                    <div class="team-member">
+                        <div class="member-photo">KB</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Keven Botelho</h3>
+                            <div class="member-role">Fundador & Apresentador</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/kevenbotelhow007" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@kevenbotelhow007</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/kevenbotelho" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@kevenbotelho</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lianderson Farias -->
+                    <div class="team-member">
+                        <div class="member-photo">LF</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Lianderson Farias</h3>
+                            <div class="member-role">Produtor & Editor</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/liandersonfarias" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@liandersonfarias</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/liandersonfarias" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@liandersonfarias</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Dandara Moreira -->
+                    <div class="team-member">
+                        <div class="member-photo">DM</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dandara Moreira</h3>
+                            <div class="member-role">Designer & Social Media</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/dandaramoreira" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@dandaramoreira</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/dandaramoreira" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@dandaramoreira</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Alessandro Mata -->
+                    <div class="team-member">
+                        <div class="member-photo">AM</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Alessandro Mata</h3>
+                            <div class="member-role">Técnico & Suporte</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/alessandromata" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@alessandromata</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/alessandromata" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@alessandromata</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Daniel Miranda -->
+                    <div class="team-member">
+                        <div class="member-photo">DM</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Daniel Miranda</h3>
+                            <div class="member-role">Roteirista & Pesquisa</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/danielmiranda" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@danielmiranda</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/danielmiranda" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@danielmiranda</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Glauton Castro (Ex-integrante) -->
+                    <div class="team-member former-member">
+                        <div class="member-photo">GC</div>
+                        <div class="member-info">
+                            <h3 class="member-name">Glauton Castro</h3>
+                            <div class="member-role">Ex-integrante</div>
+                            <ul class="social-list">
+                                <li class="social-item">
+                                    <a href="https://instagram.com/glautoncastro" target="_blank" class="social-link">
+                                        <span class="social-icon">📸</span>
+                                        <div>
+                                            <div class="social-name">Instagram</div>
+                                            <div class="social-handle">@glautoncastro</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="social-item">
+                                    <a href="https://x.com/glautoncastro" target="_blank" class="social-link">
+                                        <span class="social-icon">🐦</span>
+                                        <div>
+                                            <div class="social-name">X (Twitter)</div>
+                                            <div class="social-handle">@glautoncastro</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="images/logo-completa.png" alt="Podicrê" class="logo-img-footer">
+                    </a>
+                    <p>Cultura e Informação</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Links</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#episodes">Episódios</a></li>
+                            <li><a href="index.html#backstage">Backstage</a></li>
+                            <li><a href="index.html#about">Sobre</a></li>
+                            <li><a href="index.html#community">Comunidade</a></li>
+                            <li><a href="index.html#store">Loja</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Equipe</h4>
+                        <ul>
+                            <li><a href="#team">Nossa Equipe</a></li>
+                            <li><a href="index.html#community">Comunidade</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📸</a>
+                        <a href="mailto:podicre.plus@gmail.com" aria-label="Email">📧</a>
+                        <a href="#" aria-label="Spotify">🎵</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Podicrê. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
