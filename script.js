@@ -172,6 +172,12 @@ function initAudioPlayer() {
 }
 
 function activateAudioPlayer(url) {
+    // Se for o episódio "Racismo no esporte" (id: 1), direciona para o primeiro vídeo
+    if (url.includes('episode/1')) {
+        scrollToVideo();
+        return;
+    }
+    
     currentAudioUrl = url;
     audioPlayer.classList.add('active');
     audioPlayer.classList.remove('hidden');
@@ -299,7 +305,6 @@ function generateEpisodes() {
                 </div>
                 <div class="episode-actions">
                     <button class="btn-primary" onclick="activateAudioPlayer('https://open.spotify.com/embed/episode/${episode.id}')">🎧 Ouvir</button>
-                    <button class="btn-secondary" onclick="scrollToSection('community')">💬 Comentar</button>
                 </div>
             </div>
         `;
@@ -314,9 +319,14 @@ function initSmoothScroll() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            scrollToSection(targetId);
+            const href = link.getAttribute('href');
+            
+            // Só faz rolagem suave para âncoras internas (que começam com #)
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                scrollToSection(href);
+            }
+            // Links externos (como redes-sociais.html) funcionam normalmente
         });
     });
 }
@@ -325,6 +335,17 @@ function scrollToSection(sectionId) {
     const section = document.querySelector(sectionId);
     if (section) {
         section.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Função para rolagem suave com âncora
+function scrollToAnchor(anchor) {
+    const element = document.querySelector(anchor);
+    if (element) {
+        element.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
         });

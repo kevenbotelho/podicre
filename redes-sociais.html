@@ -149,6 +149,11 @@
             color: #999;
         }
         
+        /* Espaçamento para evitar sobreposição com o footer */
+        .team {
+            margin-bottom: 80px;
+        }
+        
         /* Estilos para mobile */
         @media (max-width: 768px) {
             .team-grid {
@@ -246,7 +251,7 @@
                 <h1 class="hero-title">Equipe <span class="highlight">Podicrê</span></h1>
                 <p class="hero-subtitle">Conheça quem está por trás do nosso conteúdo</p>
                 <div class="hero-actions">
-                    <button class="btn-primary" onclick="scrollToSection('team')">Ver Equipe</button>
+                    <a href="#team" class="btn-primary" onclick="scrollToAnchor('#team'); return false;">Ver Equipe</a>
                     <button class="btn-secondary" onclick="window.location.href='index.html'">Voltar ao Início</button>
                 </div>
             </div>
