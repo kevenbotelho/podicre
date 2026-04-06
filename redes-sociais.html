@@ -57,18 +57,41 @@
         }
         
         .member-photo {
+            position: relative;
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            aspect-ratio: 3 / 4;
+            background: #0a0a0a;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--bg-color);
-            font-family: var(--font-title);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        /* Placeholder para integrantes sem foto */
+        .member-placeholder {
+            font-size: 2.5rem;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--secondary-color);
+            font-family: var(--font-title);
+            background: linear-gradient(135deg, #111, #1a1a1a) !important;
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        /* Fallback placeholder quando não há imagem */
+        .member-photo:not(:has(img)) {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary-color);
+            font-family: var(--font-title);
+            background: linear-gradient(135deg, #111, #1a1a1a);
         }
         
         .member-info {
@@ -162,8 +185,7 @@
             }
             
             .member-photo {
-                height: 200px;
-                font-size: 3rem;
+                aspect-ratio: 3 / 4;
             }
             
             .social-list {
@@ -177,8 +199,7 @@
         
         @media (max-width: 480px) {
             .member-photo {
-                height: 180px;
-                font-size: 2.5rem;
+                aspect-ratio: 3 / 4;
             }
             
             .member-name {
@@ -273,7 +294,7 @@
                 <div class="team-grid">
                     <!-- Keven Botelho -->
                     <div class="team-member">
-                        <div class="member-photo">KB</div>
+                        <div class="member-photo"><img src="images/keven.jpeg" alt="Keven Botelho" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Keven Botelho</h3>
                             <div class="member-role">Fundador & Apresentador</div>
@@ -302,17 +323,17 @@
 
                     <!-- Lianderson Farias -->
                     <div class="team-member">
-                        <div class="member-photo">LF</div>
+                        <div class="member-photo"><img src="images/lianderson.jpeg" alt="Lianderson Farias" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Lianderson Farias</h3>
                             <div class="member-role">Produtor & Editor</div>
                             <ul class="social-list">
                                 <li class="social-item">
-                                    <a href="https://instagram.com/liandersonfarias" target="_blank" class="social-link">
+                                    <a href="https://www.instagram.com/lianderson_farias" target="_blank" class="social-link">
                                         <span class="social-icon">📸</span>
                                         <div>
                                             <div class="social-name">Instagram</div>
-                                            <div class="social-handle">@liandersonfarias</div>
+                                            <div class="social-handle">@lianderson_farias</div>
                                         </div>
                                     </a>
                                 </li>
@@ -331,17 +352,17 @@
 
                     <!-- Dandara Moreira -->
                     <div class="team-member">
-                        <div class="member-photo">DM</div>
+                        <div class="member-photo"><img src="images/dandara.jpeg" alt="Dandara Moreira" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Dandara Moreira</h3>
                             <div class="member-role">Entrevistadora e Filmmaker</div>
                             <ul class="social-list">
                                 <li class="social-item">
-                                      <a href="https://instagram.com/dandaramoreira0" target="_blank" class="social-link">
+                                      <a href="https://www.instagram.com/dandaramoreira0" target="_blank" class="social-link">
                    <span class="social-icon">📸</span>
                                         <div>
                                             <div class="social-name">Instagram</div>
-                                            <div class="social-handle">@dandaramoreira</div>
+                                            <div class="social-handle">@dandaramoreira0</div>
                                         </div>
                                     </a>
                                 </li>
@@ -360,17 +381,17 @@
 
                     <!-- Alessandro Mata -->
                     <div class="team-member">
-                        <div class="member-photo">AM</div>
+                        <div class="member-photo"><img src="images/alessandro.jpeg" alt="Alessandro Mata" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Alessandro Mata</h3>
                             <div class="member-role">Técnico & Suporte</div>
                             <ul class="social-list">
                                 <li class="social-item">
-                                    <a href="https://instagram.com/alessandromata" target="_blank" class="social-link">
+                                    <a href="https://www.instagram.com/silba_xz" target="_blank" class="social-link">
                                         <span class="social-icon">📸</span>
                                         <div>
                                             <div class="social-name">Instagram</div>
-                                            <div class="social-handle">@alessandromata</div>
+                                            <div class="social-handle">@silba_xz</div>
                                         </div>
                                     </a>
                                 </li>
@@ -389,13 +410,13 @@
 
                     <!-- Antônio Vinicius (Participação Especial) -->
                     <div class="team-member">
-                        <div class="member-photo">AV</div>
+                        <div class="member-photo"><img src="images/antonio.jpeg" alt="Antônio Vinicius" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Antônio Vinicius</h3>
                             <div class="member-role">Participação Especial</div>
                             <ul class="social-list">
                                 <li class="social-item">
-                                    <a href="https://instagram.com/antoniocastros" target="_blank" class="social-link">
+                                    <a href="https://instagram.com/Vinicius.ha9" target="_blank" class="social-link">
                                         <span class="social-icon">📸</span>
                                         <div>
                                             <div class="social-name">Instagram</div>
@@ -418,7 +439,7 @@
 
                     <!-- Daniel Miranda -->
                     <div class="team-member former-member">
-                        <div class="member-photo">DM</div>
+                        <div class="member-photo member-placeholder">DM</div>
                         <div class="member-info">
                             <h3 class="member-name">Daniel Miranda</h3>
                             <div class="member-role">Ex-integrante</div>
@@ -447,17 +468,17 @@
 
                     <!-- Glauton Castro (Ex-integrante) -->
                     <div class="team-member former-member">
-                        <div class="member-photo">GC</div>
+                        <div class="member-photo"><img src="images/glauton.jpeg" alt="Glauton Castro" loading="lazy"></div>
                         <div class="member-info">
                             <h3 class="member-name">Glauton Castro</h3>
                             <div class="member-role">Ex-integrante</div>
                             <ul class="social-list">
                                 <li class="social-item">
-                                    <a href="https://instagram.com/glautoncastro" target="_blank" class="social-link">
+                                    <a href="https://www.instagram.com/glautinh0" target="_blank" class="social-link">
                                         <span class="social-icon">📸</span>
                                         <div>
                                             <div class="social-name">Instagram</div>
-                                            <div class="social-handle">@glautoncastro</div>
+                                            <div class="social-handle">@glautinh0</div>
                                         </div>
                                     </a>
                                 </li>
@@ -513,7 +534,7 @@
                     <div class="social-icons">
                         <a href="#" aria-label="Twitter">🐦</a>
                         <a href="#" aria-label="Instagram">📸</a>
-                        <a href="mailto:podicre.plus@gmail.com" aria-label="Email">📧</a>
+                        <a href="/cdn-cgi/l/email-protection#8cfce3e8e5effee9a2fce0f9ffccebe1ede5e0a2efe3e1" aria-label="Email">📧</a>
                         <a href="#" aria-label="Spotify">🎵</a>
                     </div>
                 </div>
@@ -524,6 +545,33 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // Smooth scroll for anchor links
+        function scrollToAnchor(selector) {
+            const el = document.querySelector(selector);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Header scroll effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
