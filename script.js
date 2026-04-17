@@ -34,22 +34,24 @@ function loadBackstageVideo(btn) {
 // Episode Data
 const episodes = [
     {
-        id: 1,
-        title: 'Racismo no esporte',
-        desc: 'Conversando sobre o caso de racismo no estádio do Palmeiras - Com Glauton.',
-        date: '10/12/2025',
-        duration: '11 min',
-        guest: 'Apresentador Lianderson',
-        image: '🎧'
-    },
-    {
         id: 2,
-        title: 'Em breve',
-        desc: 'Debate acerca da manipulação do Marketing em relação à melhor divulgação de produtos',
+        title: '🎧 Episódio 2 – Marketing Digital em Debate',
+        desc: 'Debate dentro de uma empresa sobre falhas no marketing digital, comunicação e adaptação ao mercado atual.',
         date: '22/05/2026',
         duration: '15 min',
         guest: 'Gerente Keven Botelho',
-        image: '📊'
+        image: '📊',
+        anchor: '#episodio2'
+    },
+    {
+        id: 1,
+        title: '🎧 Episódio 1 – Racismo no esporte',
+        desc: 'Conversando sobre o caso de racismo no estádio do Palmeiras - Com Glauton.',
+        date: '29/01/2026',
+        duration: '11 min',
+        guest: 'Apresentador Lianderson',
+        image: '🎧',
+        anchor: '#home'
     }
 ];
 
@@ -288,14 +290,15 @@ function showMessage(message, type) {
 function generateEpisodes() {
     episodesGrid.innerHTML = '';
     
-    episodes.forEach(episode => {
+    episodes.forEach((episode, index) => {
         const episodeCard = document.createElement('div');
-        episodeCard.className = 'episode-card fade-in';
+        episodeCard.className = 'episode-card fade-in' + (index === 0 ? ' episode-card--new' : '');
         episodeCard.innerHTML = `
             <div class="episode-image">
                 <span>${episode.image}</span>
             </div>
             <div class="episode-content">
+                ${index === 0 ? '<span class="episode-new-badge">Novo</span>' : ''}
                 <h3 class="episode-title">${episode.title}</h3>
                 <p class="episode-desc">${episode.desc}</p>
                 <div class="episode-meta">
@@ -304,7 +307,7 @@ function generateEpisodes() {
                     <span class="meta-item">👥 ${episode.guest}</span>
                 </div>
                 <div class="episode-actions">
-                    <button class="btn-primary" onclick="activateAudioPlayer('https://open.spotify.com/embed/episode/${episode.id}')">🎧 Ouvir</button>
+                    <a href="${episode.anchor}" class="btn-primary" style="text-decoration:none; display:inline-block;">🎧 Assistir</a>
                 </div>
             </div>
         `;

@@ -1374,6 +1374,314 @@ p {
     }
 }
 
+/* =========================================
+   EPISÓDIO 2 — SEÇÃO DESTACADA
+   ========================================= */
+
+.ep2-section {
+    position: relative;
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(160deg, #0a0a0f 0%, #0e0718 50%, #080d05 100%);
+    border-top: 1px solid rgba(138, 43, 226, 0.3);
+    border-bottom: 1px solid rgba(204, 255, 0, 0.15);
+    overflow: hidden;
+}
+
+.ep2-bg-glow {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(138, 43, 226, 0.18) 0%, rgba(204, 255, 0, 0.06) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ep2-section .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Badge "Novo Episódio" */
+.ep2-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(204,255,0,0.15), rgba(138,43,226,0.15));
+    border: 1px solid rgba(204, 255, 0, 0.4);
+    border-radius: 50px;
+    padding: 6px 20px;
+    margin-bottom: var(--spacing-md);
+    animation: ep2-pulse 2.5s ease-in-out infinite;
+}
+
+.ep2-badge span {
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes ep2-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.3); }
+    50%       { box-shadow: 0 0 0 8px rgba(204, 255, 0, 0); }
+}
+
+/* Título */
+.ep2-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.ep2-highlight {
+    color: var(--secondary-color);
+    text-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+}
+
+/* Blockquote */
+.ep2-quote {
+    position: relative;
+    display: inline-block;
+    max-width: 720px;
+    margin: 0 auto var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(138, 43, 226, 0.12);
+    border-left: 4px solid var(--primary-color);
+    border-right: 4px solid var(--secondary-color);
+    border-radius: 12px;
+    font-family: var(--font-title);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+    text-align: center;
+}
+
+.ep2-quote-marks {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    line-height: 0;
+    vertical-align: -0.4em;
+    font-style: normal;
+    font-weight: 900;
+    margin: 0 4px;
+}
+
+/* Layout de duas colunas: vídeo + info */
+.ep2-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+    text-align: left;
+    margin-top: var(--spacing-lg);
+}
+
+/* Vídeo */
+.ep2-video-wrap {
+    position: relative;
+}
+
+.ep2-video-glow {
+    position: absolute;
+    inset: -15px;
+    background: linear-gradient(135deg, rgba(138,43,226,0.35), rgba(204,255,0,0.12));
+    border-radius: 20px;
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.ep2-iframe-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(138, 43, 226, 0.5);
+    box-shadow: 0 0 40px rgba(138, 43, 226, 0.3), 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.ep2-iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+}
+
+/* Info lateral */
+.ep2-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.ep2-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ep2-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    color: #ccc;
+    white-space: nowrap;
+}
+
+.ep2-desc {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    margin-bottom: 0;
+}
+
+.ep2-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ep2-topic-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    font-family: var(--font-body);
+    transition: all 0.3s ease;
+}
+
+.ep2-topic-item:hover {
+    background: rgba(138, 43, 226, 0.15);
+    border-color: rgba(138, 43, 226, 0.4);
+    transform: translateX(4px);
+}
+
+/* Botão CTA */
+.ep2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--secondary-color), #aadd00);
+    color: #050505;
+    border: none;
+    padding: 16px 32px;
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.4), 0 8px 30px rgba(0,0,0,0.4);
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.ep2-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s;
+}
+
+.ep2-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 40px rgba(204, 255, 0, 0.6), 0 15px 40px rgba(0,0,0,0.5);
+    color: #050505;
+}
+
+.ep2-btn:hover::before {
+    left: 100%;
+}
+
+/* Badge "Novo" nos cards de episódios */
+.episode-card--new {
+    border-color: rgba(204, 255, 0, 0.3) !important;
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.1) !important;
+}
+
+.episode-new-badge {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: #050505;
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 8px;
+}
+
+/* Responsivo — Episódio 2 */
+@media (max-width: 768px) {
+    .ep2-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .ep2-quote {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .ep2-tag-row {
+        justify-content: center;
+    }
+
+    .ep2-topics {
+        align-items: center;
+    }
+
+    .ep2-topic-item {
+        width: 100%;
+        max-width: 380px;
+        text-align: left;
+    }
+
+    .ep2-btn {
+        align-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .ep2-title {
+        letter-spacing: -1px;
+    }
+
+    .ep2-quote {
+        border-radius: 10px;
+        padding: var(--spacing-sm);
+    }
+}
+
 /* Scrollbar Custom */
 ::-webkit-scrollbar {
     width: 8px;
