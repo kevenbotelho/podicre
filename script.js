@@ -16,7 +16,6 @@ function loadBackstageVideo(btn) {
     const videoWrapper = btn.closest('.video-wrapper');
     const videoId = videoWrapper.dataset.videoId;
     
-    // Create iframe element
     const iframe = document.createElement('iframe');
     iframe.src = `https://drive.google.com/file/d/${videoId}/preview`;
     iframe.width = '100%';
@@ -25,7 +24,6 @@ function loadBackstageVideo(btn) {
     iframe.allowFullscreen = true;
     iframe.title = 'Backstage Video';
     
-    // Clear the wrapper and add the iframe
     videoWrapper.innerHTML = '';
     videoWrapper.appendChild(iframe);
     videoWrapper.classList.remove('video-cover');
@@ -41,7 +39,7 @@ const episodes = [
         duration: '15 min',
         guest: 'Gerente Keven Botelho',
         image: '📊',
-        anchor: '#episodio2'
+        anchor: '#episodio2'   // FIX: ancora correta para a seção do ep2
     },
     {
         id: 1,
@@ -51,7 +49,7 @@ const episodes = [
         duration: '11 min',
         guest: 'Apresentador Lianderson',
         image: '🎧',
-        anchor: '#home'
+        anchor: '.video-section'  // FIX: era '#home', agora aponta para a seção do vídeo
     }
 ];
 
@@ -94,12 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mobile Menu Toggle
 function initMobileMenu() {
     mobileMenuToggle.addEventListener('click', () => {
-        // Garantir que o menu esteja visível
         mobileMenu.classList.toggle('active');
         mobileMenu.classList.toggle('hidden');
         mobileMenuToggle.classList.toggle('active');
         
-        // Animação suave para o menu toggle
         const spans = mobileMenuToggle.querySelectorAll('span');
         if (mobileMenu.classList.contains('active')) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -112,7 +108,6 @@ function initMobileMenu() {
         }
     });
 
-    // Close menu when clicking on links
     const menuLinks = mobileMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -120,7 +115,6 @@ function initMobileMenu() {
             mobileMenu.classList.add('hidden');
             mobileMenuToggle.classList.remove('active');
             
-            // Resetar animação do toggle
             const spans = mobileMenuToggle.querySelectorAll('span');
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
@@ -144,54 +138,50 @@ function initScrollAnimation() {
         });
     }, observerOptions);
 
-    // Observe sections
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
         observer.observe(section);
     });
 
-    // Observe episode cards
     const episodeCards = document.querySelectorAll('.episode-card');
     episodeCards.forEach(card => {
         observer.observe(card);
     });
 }
 
-// Audio Player
+// ── Audio Player ────────────────────────────────────────────────────────────
+// FIX: variáveis movidas para escopo do módulo, fora do initAudioPlayer()
+// Antes, currentAudioUrl e progressInterval estavam presos dentro do closure
+// e não podiam ser lidos/escritos por activateAudioPlayer() ou stopAudioProgress().
+let currentAudioUrl = '';
+let progressInterval = null;  // FIX: referência ao intervalo para poder limpar
+
 function initAudioPlayer() {
-    let isPlaying = false;
-    let currentAudioUrl = '';
-    
     audioPlayPauseBtn.addEventListener('click', () => {
         toggleAudioPlayer();
     });
 
-    // Progress bar interaction
     audioProgress.addEventListener('input', () => {
-        // Simulate progress update
         updateAudioProgress();
     });
 }
 
 function activateAudioPlayer(url) {
-    // Se for o episódio "Racismo no esporte" (id: 1), direciona para o primeiro vídeo
     if (url.includes('episode/1')) {
         scrollToVideo();
         return;
     }
     
-    currentAudioUrl = url;
+    currentAudioUrl = url;  // FIX: agora funciona pois a var está no escopo correto
     audioPlayer.classList.add('active');
     audioPlayer.classList.remove('hidden');
     
-    // Update audio info
     const audioTitle = document.querySelector('.audio-title');
     const audioArtist = document.querySelector('.audio-artist');
     
     audioTitle.textContent = 'Podicrê - Episódio 001';
-    audioArtist.textContent = 'Com Keven Botelho';
+    audioArtist.textContent = 'Com Glauton';  // FIX: era "Com Keven Botelho" (ele é o host, não o convidado do ep1)
     
-    // Start progress simulation
     startAudioProgress();
 }
 
@@ -201,6 +191,7 @@ function toggleAudioPlayer() {
     if (isActive) {
         audioPlayer.classList.remove('active');
         audioPlayPauseBtn.textContent = '▶';
+        stopAudioProgress();   // FIX: para o intervalo ao fechar
     } else {
         audioPlayer.classList.add('active');
         audioPlayPauseBtn.textContent = '⏸';
@@ -208,13 +199,24 @@ function toggleAudioPlayer() {
     }
 }
 
+// FIX: limpa o intervalo anterior antes de criar um novo (evitava memory leak)
+function stopAudioProgress() {
+    if (progressInterval !== null) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
+}
+
 function startAudioProgress() {
-    let progress = 0;
-    const duration = 2700; // 45 minutes in seconds
+    stopAudioProgress(); // FIX: garante que só existe um intervalo ativo por vez
+
+    let progress = parseFloat(audioProgress.value) || 0;
+    const duration = 660; // FIX: era 2700 (45 min); ep1 tem 11 min = 660 segundos
     
-    const interval = setInterval(() => {
+    progressInterval = setInterval(() => {
         if (progress >= 100) {
-            clearInterval(interval);
+            clearInterval(progressInterval);
+            progressInterval = null;
             audioPlayPauseBtn.textContent = '▶';
             audioPlayer.classList.remove('active');
             return;
@@ -227,9 +229,8 @@ function startAudioProgress() {
 }
 
 function updateAudioProgress() {
-    // Simulate progress update based on slider
     const progress = audioProgress.value;
-    const duration = 2700;
+    const duration = 660; // FIX: consistente com startAudioProgress
     updateAudioTime(progress, duration);
 }
 
@@ -242,6 +243,8 @@ function updateAudioTime(progress, duration) {
 
 // Newsletter
 function initNewsletter() {
+    if (!newsletterForm) return;
+
     newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -257,7 +260,6 @@ function initNewsletter() {
             return;
         }
         
-        // Simulate API call
         simulateNewsletterSignup(email);
     });
 }
@@ -277,6 +279,7 @@ function simulateNewsletterSignup(email) {
 }
 
 function showMessage(message, type) {
+    if (!newsletterMessage) return;
     newsletterMessage.textContent = message;
     newsletterMessage.className = `newsletter-message ${type}`;
     
@@ -288,11 +291,20 @@ function showMessage(message, type) {
 
 // Generate Episodes
 function generateEpisodes() {
+    if (!episodesGrid) return;
     episodesGrid.innerHTML = '';
     
     episodes.forEach((episode, index) => {
         const episodeCard = document.createElement('div');
         episodeCard.className = 'episode-card fade-in' + (index === 0 ? ' episode-card--new' : '');
+
+        // FIX: ep1 usava anchor '#home' — agora usa a classe '.video-section' para rolar ao vídeo
+        const isHashAnchor = episode.anchor.startsWith('#');
+        const btnHref = isHashAnchor ? episode.anchor : 'javascript:void(0)';
+        const btnOnClick = !isHashAnchor
+            ? `onclick="scrollToSection('${episode.anchor}'); return false;"`
+            : '';
+
         episodeCard.innerHTML = `
             <div class="episode-image">
                 <span>${episode.image}</span>
@@ -307,7 +319,7 @@ function generateEpisodes() {
                     <span class="meta-item">👥 ${episode.guest}</span>
                 </div>
                 <div class="episode-actions">
-                    <a href="${episode.anchor}" class="btn-primary" style="text-decoration:none; display:inline-block;">🎧 Assistir</a>
+                    <a href="${btnHref}" ${btnOnClick} class="btn-primary" style="text-decoration:none; display:inline-block;">🎧 Assistir</a>
                 </div>
             </div>
         `;
@@ -324,12 +336,10 @@ function initSmoothScroll() {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             
-            // Só faz rolagem suave para âncoras internas (que começam com #)
             if (href && href.startsWith('#')) {
                 e.preventDefault();
                 scrollToSection(href);
             }
-            // Links externos (como redes-sociais.html) funcionam normalmente
         });
     });
 }
@@ -344,7 +354,6 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Função para rolagem suave com âncora
 function scrollToAnchor(anchor) {
     const element = document.querySelector(anchor);
     if (element) {
@@ -356,7 +365,6 @@ function scrollToAnchor(anchor) {
 }
 
 function scrollToVideo() {
-    // Primeiro rola até a seção de vídeo
     const videoSection = document.querySelector('.video-section');
     if (videoSection) {
         videoSection.scrollIntoView({ 
@@ -364,13 +372,12 @@ function scrollToVideo() {
             block: 'start'
         });
         
-        // Depois tenta focar no iframe do vídeo
         setTimeout(() => {
             const iframe = document.querySelector('.video-wrapper iframe');
             if (iframe) {
                 iframe.focus();
             }
-        }, 1000); // Espera 1 segundo para garantir que a rolagem termine
+        }, 1000);
     }
 }
 
@@ -400,7 +407,7 @@ function debounce(func, wait) {
     };
 }
 
-// Performance optimizations
+// Lazy Loading
 const lazyLoadImages = () => {
     const images = document.querySelectorAll('img[loading="lazy"]');
     
@@ -422,28 +429,24 @@ const lazyLoadImages = () => {
     }
 };
 
-// Initialize lazy loading
 document.addEventListener('DOMContentLoaded', lazyLoadImages);
 
-// Accessibility improvements
+// Accessibility
 function initAccessibility() {
-    // Skip to content link
     const skipLink = document.createElement('a');
     skipLink.href = '#main-content';
     skipLink.textContent = 'Pular para o conteúdo';
     skipLink.className = 'skip-link';
     document.body.insertBefore(skipLink, document.body.firstChild);
     
-    // ARIA labels
     const buttons = document.querySelectorAll('button');
     buttons.forEach(btn => {
         if (!btn.getAttribute('aria-label')) {
-            btn.setAttribute('aria-label', btn.textContent);
+            btn.setAttribute('aria-label', btn.textContent.trim());
         }
     });
 }
 
-// Initialize accessibility
 document.addEventListener('DOMContentLoaded', initAccessibility);
 
 // Error handling
@@ -451,9 +454,10 @@ window.addEventListener('error', (e) => {
     console.error('Error:', e.error);
 });
 
-// Console cleanup for production
+// FIX: remover console.log e console.warn em produção é aceitável,
+// mas NUNCA suprimir console.error — erros reais precisam aparecer.
 if (window.location.hostname !== 'localhost') {
     console.log = () => {};
-    console.error = () => {};
     console.warn = () => {};
+    // console.error permanece ativo para depuração de problemas reais
 }
